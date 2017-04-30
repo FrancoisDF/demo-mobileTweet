@@ -1,19 +1,26 @@
 # Tweeter mobile application
 
-> ionic and angular based application
+> [ionic](http://ionicframework.com/) and angular based application
 
 ## Getting started
 
+### Journey of a developer
+
+1. download stuff
+2. read docs
+3. configure things
+4. test
+5. fix
+6. test again...
+
 ### Getting started with your environment
 
-To get stater with any project, you need the right resource. All our application stack rely on NodeJs. NodeJs help to create application in Javascript for client side application (web site...) or even server side logic (API, backend, database, login...).
-To get started, need to install the latest recommended version of [Node Js](https://nodejs.org/en/)
+To get stater with any project, you need the right resources. Those resources will help us to develop (IDE), support or development stack (NodeJs) or even separate our day-to-day work with the the development environment for security and performance concern... :
 
-Now that you have an environment, you need an IDE to get started. Because we love Javascript, we will use one of the 2 IDE made in Javascript!! (Will get back to that later):
-- [Atom](https://atom.io): A free open source editor made by Github.
-- [visual studio code](https://code.visualstudio.com/): Made by Microsoft, a multi platform light way editor.
-
-Since we will make some call to tweeter API from our local environment, please install a [google plugin](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en) that will help the development of our application. (CORS issue...)
+- [Node Js](https://nodejs.org/en/): All our application stack rely on NodeJs. NodeJs help to create application in Javascript for client side application (web site...) or even server side logic (API, backend, database, login...).
+- [visual studio code](https://code.visualstudio.com/): Made by Microsoft, a multi platform light way editor made in Javascript! (Based on Electron). You can also use [Atom](https://atom.io) based on a Javascript core as well or any other IDE if you have them installed on your machine.
+- [Chrome canary](https://www.google.com/intl/en/chrome/browser/canary.html?brand=KERZ#eula): This will let you have an web environment detached from your own browser for security issue.
+- [Chrome plugin deactivate security ](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en): That will help the development of our application since we connect to different external sever for tweeter for example. (CORS issue...)
 
 ### Getting started with the project
 
@@ -44,25 +51,31 @@ Then run:
 $ ionic start
 ```
 
+To use the platform locally connected to your android phone:
+
+```bash
+$ ionic platform add android
+```
+
 More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
 
 
 ## Make a tweeter application
 
-1- Create a tweeter application : https://apps.twitter.com/
-2- get your app keys
-3- add plugin on
+1. Create a tweeter application : https://apps.twitter.com/
+2. get your app keys
+3. add plugin on
 
 
 
 ## Build and play with your own application
 
-1- create an account on [apps.ionic.io](https://apps.ionic.io/apps/).
-2- create a new app and save it in `ionic.config.json` file in the `app_id` parameter.
-3- run `ionic io init` in your console at the root of your project folder.
-4- to create android build, run `ionic package build android`.
-5- download the `.apk` file from ionic.io dashboard page.
-6- Just connect your smartphone to computer via USB cable and select “Media device” when prompted. Then, open your phone's folder on your PC and copy the APK file you want to install. Simply tap the APK file on your handset to facilitate installation. You can also install APK files from your phone's.
+1. create an account on [apps.ionic.io](https://apps.ionic.io/apps/).
+2. create a new app and save it in `ionic.config.json` file in the `app_id` parameter.
+3. run `ionic io init` in your console at the root of your project folder.
+4. to create android build, run `ionic package build android`.
+5. download the `.apk` file from ionic.io dashboard page.
+6. Just connect your smartphone to computer via USB cable and select “Media device” when prompted. Then, open your phone's folder on your PC and copy the APK file you want to install. Simply tap the APK file on your handset to facilitate installation. You can also install APK files from your phone's.
 
 
 

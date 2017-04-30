@@ -14,7 +14,6 @@ $font-path: "../assets/fonts";
 
 
 
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -30,6 +29,8 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222
 );
+
+$toolbar-background: color($colors, danger);
 
 
 // App iOS Variables

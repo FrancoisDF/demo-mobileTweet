@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import ionicConfig from '../../ionic.config.json';
@@ -27,6 +28,7 @@ const cloudSettings: CloudSettings = {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)

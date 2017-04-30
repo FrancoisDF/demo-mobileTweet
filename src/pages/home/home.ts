@@ -1,3 +1,5 @@
+import 'rxjs/add/operator/map';
+
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, ToastController } from 'ionic-angular';
 // import { InAppBrowser } from 'ionic-native';
@@ -42,17 +44,19 @@ export class HomePage {
 
     !refresher && this.showLoading();
 
-    let url = 'https://api.twitter.com/1.1/statuses/home_timeline.json';
-    let params = {count: 10};
+    let url = '/twitter/1.1/statuses/home_timeline.json';
 
-    this.twitter.get(url, params, appkey, token).subscribe((res) => {
-      this.tweets = res.json();
+    // let url = 'https://api.twitter.com/1.1/statuses/home_timeline.json';
+    let params = {count: 20};
+
+    this.twitter.get(url, params, appkey, token).map(res => res.json()).subscribe((data) => {
+      this.tweets = data;
       refresher? refresher.complete() : this.loading.dismiss();
     }, error => {
       refresher? refresher.complete() : this.loading.dismiss();
       this.showError(error);
     });
-
+    //
     // setTimeout(()=>{
     //   this.tweets = [
     //     {
@@ -81,13 +85,13 @@ export class HomePage {
     //       }
     //     }
     //   ];
-    //
-    //
+    //   refresher? refresher.complete() : this.loading.dismiss();
     // }, 1000);
+
   }
 
   private showError(text): void {
-    this.loading.dismiss();
+    // this.loading.dismiss();
     let alert = this.alertCtrl.create({
       title: 'Error',
       message: text,
