@@ -2,11 +2,5 @@
   "name": "myApp",
   "v2": true,
   "typescript": true,
-  "app_id": "6bf9cc6b",
-  "proxies": [
-    {
-      "path": "/twitter/",
-      "proxyUrl": "https://api.twitter.com"
-    }
-  ]
+  "app_id": "6bf9cc6b"
 }

@@ -3,8 +3,6 @@ import 'rxjs/add/operator/map';
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, ToastController } from 'ionic-angular';
 // import { InAppBrowser } from 'ionic-native';
-import { appkey, token } from '../../config.twitter'
-import { TwitterService } from 'ng2-twitter';
 
 
 @Component({
@@ -19,8 +17,7 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController,
-    private twitter: TwitterService) {}
+    private loadingCtrl: LoadingController) {}
 
 
   public ionViewWillEnter() {
@@ -44,49 +41,37 @@ export class HomePage {
 
     !refresher && this.showLoading();
 
-    let url = '/twitter/1.1/statuses/home_timeline.json';
 
-    // let url = 'https://api.twitter.com/1.1/statuses/home_timeline.json';
-    let params = {count: 20};
-
-    this.twitter.get(url, params, appkey, token).map(res => res.json()).subscribe((data) => {
-      this.tweets = data;
+    setTimeout(()=>{
+      this.tweets = [
+        {
+          user: {
+            name : 'francois',
+            profile_image_url: 'https://abs.twimg.com/a/1404172626/images/oauth_application.png'
+          },
+          created_at: 'today',
+          text: 'My awesome fake post that doesn\'t do anything special, it\'s just here',
+          entities:{
+            urls: [{
+              url: ''
+            }]
+          }
+        },{
+          user: {
+            name : 'kevin',
+            profile_image_url: 'https://abs.twimg.com/a/1404172626/images/oauth_application.png'
+          },
+          created_at: 'yesterday',
+          text: 'A super cool tweet about everything I love!!!!!!',
+          entities:{
+            urls: [{
+              url: ''
+            }]
+          }
+        }
+      ];
       refresher? refresher.complete() : this.loading.dismiss();
-    }, error => {
-      refresher? refresher.complete() : this.loading.dismiss();
-      this.showError(error);
-    });
-    //
-    // setTimeout(()=>{
-    //   this.tweets = [
-    //     {
-    //       user: {
-    //         name : 'francois',
-    //         profile_image_url: 'https://abs.twimg.com/a/1404172626/images/oauth_application.png'
-    //       },
-    //       created_at: 'today',
-    //       text: 'My awesome fake post that doesn\'t do anything special, it\'s just here',
-    //       entities:{
-    //         urls: [{
-    //           url: ''
-    //         }]
-    //       }
-    //     },{
-    //       user: {
-    //         name : 'kevin',
-    //         profile_image_url: 'https://abs.twimg.com/a/1404172626/images/oauth_application.png'
-    //       },
-    //       created_at: 'yesterday',
-    //       text: 'A super cool tweet about everything I love!!!!!!',
-    //       entities:{
-    //         urls: [{
-    //           url: ''
-    //         }]
-    //       }
-    //     }
-    //   ];
-    //   refresher? refresher.complete() : this.loading.dismiss();
-    // }, 1000);
+    }, 1000);
 
   }
 

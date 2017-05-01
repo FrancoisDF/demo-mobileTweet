@@ -1,24 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import ionicConfig from '../../ionic.config.json';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { TwitterService } from 'ng2-twitter';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-const cloudSettings: CloudSettings = {
-  'core': {
-    'app_id': ionicConfig.app_id
-  }
-};
 
 @NgModule({
   declarations: [
@@ -30,8 +21,7 @@ const cloudSettings: CloudSettings = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
-    CloudModule.forRoot(cloudSettings)
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +32,6 @@ const cloudSettings: CloudSettings = {
   providers: [
     StatusBar,
     SplashScreen,
-    TwitterService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
