@@ -3,10 +3,13 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ApiService } from './api.service';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+
+import { NetflixPage } from '../pages/netflix/netflix';
+import { CatPage } from '../pages/cat/cat';
+import { QuotePage } from '../pages/quote/quote';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,8 +17,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage
+    NetflixPage,
+    CatPage,
+    QuotePage
   ],
   imports: [
     BrowserModule,
@@ -26,12 +30,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage
+    NetflixPage,
+    CatPage,
+    QuotePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    ApiService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

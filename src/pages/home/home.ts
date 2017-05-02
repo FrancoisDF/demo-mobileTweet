@@ -1,8 +1,17 @@
 import 'rxjs/add/operator/map';
 
 import { Component } from '@angular/core';
+import { Http, Response } from '@angular/http';
 import { NavController, AlertController, LoadingController, Loading, ToastController } from 'ionic-angular';
 // import { InAppBrowser } from 'ionic-native';
+
+// let urlCat;
+// if (window['cordova']) {
+//   url = 'http://catfacts-api.appspot.com/api/facts?number=10';
+//   urlMath = 'http://numbersapi.com/#random/date'
+// } else {
+//   url = '/cats/facts?number=20';
+// }
 
 
 @Component({
@@ -17,7 +26,8 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController) {}
+    private loadingCtrl: LoadingController,
+    private http: Http) {}
 
 
   public ionViewWillEnter() {
@@ -41,38 +51,11 @@ export class HomePage {
 
     !refresher && this.showLoading();
 
-
-    setTimeout(()=>{
-      this.tweets = [
-        {
-          user: {
-            name : 'francois',
-            profile_image_url: 'https://abs.twimg.com/a/1404172626/images/oauth_application.png'
-          },
-          created_at: 'today',
-          text: 'My awesome fake post that doesn\'t do anything special, it\'s just here',
-          entities:{
-            urls: [{
-              url: ''
-            }]
-          }
-        },{
-          user: {
-            name : 'kevin',
-            profile_image_url: 'https://abs.twimg.com/a/1404172626/images/oauth_application.png'
-          },
-          created_at: 'yesterday',
-          text: 'A super cool tweet about everything I love!!!!!!',
-          entities:{
-            urls: [{
-              url: ''
-            }]
-          }
-        }
-      ];
-      refresher? refresher.complete() : this.loading.dismiss();
-    }, 1000);
-
+    // this.http.get(url).subscribe((res) => {
+    //   this.tweets = res.json().facts;
+    //   refresher? refresher.complete() : this.loading.dismiss();
+    //
+    // })
   }
 
   private showError(text): void {

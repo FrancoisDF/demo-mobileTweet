@@ -1,0 +1,36 @@
+<ion-header no-border color="primary">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Netflix</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="loadTimeline($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-card *ngFor="let netflix of netflixList">
+
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{tweet.user.profile_image_url}}">
+      </ion-avatar>
+      <h2>{{netflix.show_title}}</h2>
+      <p>{{netflix.category}}</p>
+    </ion-item>
+
+    <img src="{{netflix.poster}}"/>
+
+    <ion-card-content>
+      <p>{{netflix.summary}}</p>
+    </ion-card-content>
+
+  </ion-card>
+
+
+</ion-content>

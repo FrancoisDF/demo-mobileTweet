@@ -1,0 +1,31 @@
+<ion-header no-border color="primary">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cats</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="loadTimeline($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-card *ngFor="let cat of cats">
+
+    <img src="{{cat.picture}}">
+
+    <ion-item>
+      <h2>Cats</h2>
+      <p>{{cat.category}}</p>
+    </ion-item>
+
+    <ion-card-content>
+      <p>{{cat.text}}</p>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

@@ -2,5 +2,20 @@
   "name": "myApp",
   "v2": true,
   "typescript": true,
-  "app_id": "6bf9cc6b"
+  "app_id": "6bf9cc6b",
+  "proxies": [
+    {
+      "path": "/catfacts-api.appspot.com/",
+      "proxyUrl": "http://catfacts-api.appspot.com/"
+    },{
+      "path": "/community-netflix-roulette.p.mashape.com/",
+      "proxyUrl": "https://community-netflix-roulette.p.mashape.com/"
+    },{
+      "path": "/numbersapi.p.mashape.com/",
+      "proxyUrl": "https://numbersapi.p.mashape.com/"
+    },{
+      "path": "/andruxnet-random-famous-quotes.p.mashape.com/",
+      "proxyUrl": "https://andruxnet-random-famous-quotes.p.mashape.com/"
+    }
+  ]
 }

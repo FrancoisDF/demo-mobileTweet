@@ -1,0 +1,30 @@
+<ion-header no-border color="primary">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Quotes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="loadTimeline($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-card *ngFor="let quote of quotes">
+
+
+    <ion-item>
+      <h2>{{quote.author}}</h2>
+      <p>{{quote.category}}</p>
+    </ion-item>
+
+    <ion-card-content>
+      <p>{{quote.quote}}</p>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>
