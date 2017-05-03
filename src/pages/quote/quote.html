@@ -1,5 +1,5 @@
-<ion-header no-border color="primary">
-  <ion-navbar>
+<ion-header no-border>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -15,7 +15,6 @@
 
   <ion-card *ngFor="let quote of quotes">
 
-
     <ion-item>
       <h2>{{quote.author}}</h2>
       <p>{{quote.category}}</p>
@@ -24,6 +23,7 @@
     <ion-card-content>
       <p>{{quote.quote}}</p>
     </ion-card-content>
+    
   </ion-card>
 
 

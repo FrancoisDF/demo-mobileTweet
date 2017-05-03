@@ -6,8 +6,7 @@ import { HttpModule } from '@angular/http';
 import { ApiService } from './api.service';
 
 import { MyApp } from './app.component';
-
-import { NetflixPage } from '../pages/netflix/netflix';
+import { TabsPage } from '../pages/tabs/tabs';
 import { CatPage } from '../pages/cat/cat';
 import { QuotePage } from '../pages/quote/quote';
 
@@ -17,9 +16,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    NetflixPage,
     CatPage,
-    QuotePage
+    QuotePage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -30,9 +29,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    NetflixPage,
     CatPage,
-    QuotePage
+    QuotePage,
+    TabsPage
   ],
   providers: [
     StatusBar,
