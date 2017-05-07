@@ -8,8 +8,8 @@ import { QuotePage } from '../quote/quote';
 })
 export class TabsPage {
 
-  tab1Root = CatPage;
   tab2Root = QuotePage;
+  tab1Root = CatPage;
 
   constructor() {
 

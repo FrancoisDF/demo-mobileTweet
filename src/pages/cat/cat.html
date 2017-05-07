@@ -3,8 +3,9 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Cats</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
@@ -13,17 +14,19 @@
   </ion-refresher>
 
 
-  <ion-card *ngFor="let cat of cats">
+  <ion-card *ngFor="let data of list">
 
-    <img src="{{cat.picture}}">
 
-    <ion-item>
+    <!-- <ion-item>
+      <ion-avatar item-left>
+        <img src="{{data.picture}}">
+      </ion-avatar>
       <h2>Cats</h2>
-      <p>{{cat.category}}</p>
-    </ion-item>
+      <p>{{data.category}}</p>
+    </ion-item> -->
 
     <ion-card-content>
-      <p>{{cat.text}}</p>
+      <p>{{data.text}}</p>
     </ion-card-content>
   </ion-card>
 

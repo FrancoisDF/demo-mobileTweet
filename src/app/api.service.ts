@@ -1,3 +1,5 @@
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -30,54 +32,56 @@ export class ApiService {
   }
 
   public cats(): Observable<Object> {
-    let url = baseHttp + 'catfacts-api.appspot.com/api/facts?number=8 ';
     /*
-    [{
+      [{
       text: 'facts ..',
       picture: 'random picture of a cat...'
     ]
     */
-    return this.http.get(url)
-      .map((res: Response) => {
-        const list: any[] = res.json().facts;
-        const listObj: any[] = [];
-        forEach(list, text => {
-          listObj.push({
-            text: text,
-            category: 'food for thought',
-            picture: 'http://thecatapi.com/api/images/get?format=src&' + this.random()
-          })
-        });
-        return listObj;
-      })
+    let url = baseHttp + 'catfacts-api.appspot.com/api/facts?number=8';
+    return this.http.get(url).map((res: Response) => {
+      const list: any[] = res.json().facts;
+      const listObj: any[] = [];
+      forEach(list, text => {
+        listObj.push({
+          text: text,
+          category: 'food for thought',
+          picture: 'http://thecatapi.com/api/images/get?format=src&size=small&' + this.random()
+        })
+      });
+      return listObj;
+    })
   }
 
   public numbers(type= 'trivia'){
-    /*
-    {
+
+    // "trivia", "math", "date", or "year"
+      /*
+      [{
       "text": "300 is the number of pounds per square inch of pressure to break the shell of Macadamia nuts.",
       "number": 300,
       "found": true,
       "type": "trivia"
-    }
+    }]
     */
+    let url = baseHttps + `numbersapi.p.mashape.com/random/${type}`;
+    let query = [];
+    for(let i=0; i < 6; i++){
+      query.push(this.http.get(url, this.options).map((res: Response) => res.json()))
+    }
 
-    let url = baseHttps + 'numbersapi.p.mashape.com/random/{type}';
-
-    return this.http.get(url, this.options)
-       .map((res: Response) => res.json());
+    return Observable.forkJoin(query);
   }
 
   public quotes(){
     /*
-    [{
+      [{
       "quote": "Once you eliminate the impossible, whatever remains, no matter how improbable, must be the truth.",
       "author": "Sherlock Holmes",
       "category": "Famous",
     }]
     */
     let url = baseHttps + 'andruxnet-random-famous-quotes.p.mashape.com/?cat=famous&count=10';
-    return this.http.get(url, this.options)
-      .map((res: Response) => res.json());
+    return this.http.get(url, this.options).map((res: Response) => res.json());
   }
 }

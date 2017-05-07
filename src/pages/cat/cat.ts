@@ -11,8 +11,8 @@ import { ApiService } from '../../app/api.service';
 })
 export class CatPage {
   public loading: Loading;
-
-  public cats:any = [];
+  public title:string  = 'Cat Facts';
+  public list:any = [];
 
   constructor(
     public navCtrl: NavController,
@@ -24,35 +24,32 @@ export class CatPage {
     this.loadTimeline();
   }
 
-  private showLoading(): void {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    this.loading.present();
-  }
-
-  public random(): number{
-    return Math.floor(Math.random() * 10000);
-  }
-
   public loadTimeline(refresher?) {
-    !refresher && this.showLoading();
-    this.api.cats().subscribe((data) => {
-      console.log(data)
-      this.cats = data;
-      refresher? refresher.complete() : this.loading.dismiss();
+    this.showLoading(refresher);
 
+    // every time we scroll up, we refresh the cats list
+    this.api.cats().subscribe((data) => {
+      this.list = data;
+      this.hideLoading(refresher);
+    }, error => {
+      this.hideLoading(refresher);
     })
   }
 
-  private showError(text): void {
-    // this.loading.dismiss();
-    let alert = this.alertCtrl.create({
-      title: 'Error',
-      message: text,
-      buttons: ['OK']
-    });
-    alert.present(prompt);
+  private showLoading(refresher?): void {
+    if(!refresher){
+      this.loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      this.loading.present();
+    }
   }
 
+  private hideLoading(refresher?): void{
+    if(refresher){
+      refresher.complete()
+    } else {
+      this.loading.dismiss();
+    }
+  }
 }

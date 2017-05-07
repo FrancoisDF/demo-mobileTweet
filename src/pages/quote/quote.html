@@ -3,28 +3,45 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Quotes</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
+
+  <ion-segment [(ngModel)]="type" (ngModelChange)="loadTimeline()">
+      <ion-segment-button value="trivia">
+        trivia
+      </ion-segment-button>
+      <ion-segment-button value="math">
+        math
+      </ion-segment-button>
+      <ion-segment-button value="date">
+        date
+      </ion-segment-button>
+      <ion-segment-button value="year">
+        year
+      </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
+
+
 <ion-content padding>
+
   <ion-refresher (ionRefresh)="loadTimeline($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
 
-  <ion-card *ngFor="let quote of quotes">
+  <ion-card *ngFor="let data of list">
 
     <ion-item>
-      <h2>{{quote.author}}</h2>
-      <p>{{quote.category}}</p>
+      <h2>{{data.author}}</h2>
+      <p>{{data.category}}</p>
     </ion-item>
 
     <ion-card-content>
-      <p>{{quote.quote}}</p>
+      <p>{{data.quote}}</p>
     </ion-card-content>
-    
-  </ion-card>
 
+  </ion-card>
 
 </ion-content>

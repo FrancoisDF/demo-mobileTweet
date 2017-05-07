@@ -11,8 +11,9 @@ import { ApiService } from '../../app/api.service';
 })
 export class QuotePage {
   public loading: Loading;
-
-  public quotes:any = [];
+  public title: string = 'Math...';
+  public type:any = 'trivia';
+  public list:any = [];
 
   constructor(
     public navCtrl: NavController,
@@ -24,30 +25,32 @@ export class QuotePage {
     this.loadTimeline();
   }
 
-  private showLoading(): void {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    this.loading.present();
-  }
-
   public loadTimeline(refresher?) {
 
-    !refresher && this.showLoading();
-
-    this.api.quotes().subscribe((data) => {
-      this.quotes = data;
-      refresher? refresher.complete() : this.loading.dismiss();
-    })
+    this.showLoading(refresher);
+    // every time we scroll up, we refresh the cats list
+    this.api.numbers(this.type).subscribe((data) => {
+      this.list = data;
+      this.hideLoading(refresher);
+    }, error => {
+      this.hideLoading(refresher);
+    });
   }
 
-  private showError(text): void {
-    // this.loading.dismiss();
-    let alert = this.alertCtrl.create({
-      title: 'Error',
-      message: text,
-      buttons: ['OK']
-    });
-    alert.present(prompt);
+  private showLoading(refresher?): void {
+    if(!refresher){
+      this.loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      this.loading.present();
+    }
+  }
+
+  private hideLoading(refresher?): void{
+    if(refresher){
+      refresher.complete()
+    } else {
+      this.loading.dismiss();
+    }
   }
 }
