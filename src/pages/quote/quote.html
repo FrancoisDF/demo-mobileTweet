@@ -6,7 +6,7 @@
     <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
-  <ion-segment [(ngModel)]="type" (ngModelChange)="loadTimeline()">
+  <ion-segment [(ngModel)]="type" (ngModelChange)="tabChanged()">
       <ion-segment-button value="trivia">
         trivia
       </ion-segment-button>
@@ -33,14 +33,9 @@
 
   <ion-card *ngFor="let data of list">
 
-    <ion-item>
-      <h2>{{data.author}}</h2>
-      <p>{{data.category}}</p>
-    </ion-item>
+    <!-- Add a card content to display the text -->
 
-    <ion-card-content>
-      <p>{{data.quote}}</p>
-    </ion-card-content>
+  
 
   </ion-card>
 

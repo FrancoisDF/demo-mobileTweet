@@ -29,7 +29,10 @@ export class CatPage {
 
     // every time we scroll up, we refresh the cats list
     this.api.cats().subscribe((data) => {
-      this.list = data;
+      // TODO
+      // uncomment the next line to affect the data to the current display list
+      // this.list = data;
+
       this.hideLoading(refresher);
     }, error => {
       this.hideLoading(refresher);

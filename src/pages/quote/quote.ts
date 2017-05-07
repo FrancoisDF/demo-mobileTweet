@@ -11,7 +11,7 @@ import { ApiService } from '../../app/api.service';
 })
 export class QuotePage {
   public loading: Loading;
-  public title: string = 'Math...';
+  public title: string = 'We Love Math...';
   public type:any = 'trivia';
   public list:any = [];
 
@@ -25,16 +25,23 @@ export class QuotePage {
     this.loadTimeline();
   }
 
-  public loadTimeline(refresher?) {
 
+
+  public loadTimeline(refresher?) {
     this.showLoading(refresher);
     // every time we scroll up, we refresh the cats list
-    this.api.numbers(this.type).subscribe((data) => {
-      this.list = data;
-      this.hideLoading(refresher);
-    }, error => {
-      this.hideLoading(refresher);
-    });
+
+    // TODO
+    // Use this.api.numbers to get the data then add them in this.list
+
+
+  }
+
+  public tabChanged(){
+    console.log("The tab changed");
+    // TODO
+    // reload the timeline when the tab change
+
   }
 
   private showLoading(refresher?): void {

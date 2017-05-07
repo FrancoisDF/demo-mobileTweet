@@ -9,7 +9,7 @@ import { CatPage } from '../pages/cat/cat';
 import { QuotePage } from '../pages/quote/quote';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'sideMenu.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -24,8 +24,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'List', component: QuotePage },
-      { title: 'Cats', component: CatPage }
+      { title: 'Cats', component: CatPage },
+      { title: 'List', component: QuotePage }
     ];
 
   }
